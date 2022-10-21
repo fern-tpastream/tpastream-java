@@ -1,10 +1,32 @@
 # TPA Stream Java Library
 
-[![Maven Central](https://img.shields.io/badge/maven--central-v0.0.1-orange)](https://mvnrepository.com/artifact/io.github.fern-api/tpastream)
+[![Maven Central](https://img.shields.io/nexus/r/io.github.fern-api/tpastream?server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/releases/io/github/fern-api/tpastream/)
 
 ## Documentation
 
 API documentation is available at <https://developers.tpastream.com/en/latest/index.html>.
+
+## Installation
+
+### Gradle users
+
+Add this dependency to your project's build file:
+
+```groovy
+implementation "io.github.fern-api:tpastream:0.0.12"
+```
+
+### Maven users
+
+Add this dependency to your project's POM:
+
+```xml
+<dependency>
+  <groupId>io.github.fern-api</groupId>
+  <artifactId>tpastream</artifactId>
+  <version>0.0.12</version>
+</dependency>
+```
 
 ## Usage
 
