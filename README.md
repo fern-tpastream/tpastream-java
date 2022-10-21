@@ -1,6 +1,6 @@
 # TPA Stream Java Library
 
-[![Maven Central](https://img.shields.io/badge/maven--central-v0.0.1-orange)](https://mvnrepository.com/artifact/com.{company}/{company}-java)
+[![Maven Central](https://img.shields.io/badge/maven--central-v0.0.1-orange)](https://mvnrepository.com/artifact/io.github.fern-api/tpastream)
 
 ## Documentation
 
@@ -9,28 +9,24 @@ API documentation is available at <https://developers.tpastream.com/en/latest/in
 ## Usage
 
 ```java
-TBD
-...
+BasicAuth auth = BasicAuth.of(username, password);
 
+TpaStreamApiClient tpastreamApiClient = 
+        new TpaStreamApiClient("https://app.tpastream.com/api/", auth);
+
+try {
+    Claim claim = tpastreamApiClient.claims().getClaim(GetClaim.Request.builder()
+        .claimMedicalId(01234)
+        .build());
+    System.out.println("Successfully fetched claim with id" + claim.getId());
+} catch (GetClaimException e) {
+    System.out.println("Encountered error while fetching claim" + e.getMessage());
+}
 ```
 
 ## Sample app
 
-Check out the [sample app](.sample-app/app.java) which consumes this SDK!
-
-```bash
-TBD
-```
-
-## SDK Examples
-
-Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://developers.tpastream.com/en/latest/index.html) to see all of our endpoints.
-
-### TODO 1
-
-```java
-... TODO 
-```
+Check out the [sample app](sample-app/src/main/java/sample/App.java) which consumes this SDK!
 
 ## Beta status
 
