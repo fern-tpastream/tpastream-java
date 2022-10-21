@@ -1,12 +1,18 @@
 package com.tpa.stream.api.client.key;
 
 import com.tpa.stream.api.client.BasicAuth;
-import com.tpa.stream.api.client.key.endpoints.Create;
-import com.tpa.stream.api.client.key.endpoints.DeleteKey;
-import com.tpa.stream.api.client.key.endpoints.Get;
-import com.tpa.stream.api.client.key.exceptions.CreateException;
-import com.tpa.stream.api.client.key.exceptions.DeleteKeyException;
-import com.tpa.stream.api.client.key.exceptions.GetException;
+import com.tpa.stream.api.client.key.endpoints.CreateGpg;
+import com.tpa.stream.api.client.key.endpoints.CreateRsa;
+import com.tpa.stream.api.client.key.endpoints.DeleteGpg;
+import com.tpa.stream.api.client.key.endpoints.DeleteRsa;
+import com.tpa.stream.api.client.key.endpoints.GetGpg;
+import com.tpa.stream.api.client.key.endpoints.GetRsa;
+import com.tpa.stream.api.client.key.exceptions.CreateGpgException;
+import com.tpa.stream.api.client.key.exceptions.CreateRsaException;
+import com.tpa.stream.api.client.key.exceptions.DeleteGpgException;
+import com.tpa.stream.api.client.key.exceptions.DeleteRsaException;
+import com.tpa.stream.api.client.key.exceptions.GetGpgException;
+import com.tpa.stream.api.client.key.exceptions.GetRsaException;
 import com.tpa.stream.api.client.key.types.PublicKey;
 import java.lang.RuntimeException;
 import java.lang.String;
@@ -27,18 +33,33 @@ public final class PublicKeyServiceClient {
     this.auth = Optional.of(auth);
   }
 
-  public PublicKey get(Get.Request request) throws GetException {
-    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for get")));
-    return this.service.get(authValue);
+  public PublicKey getGpg(GetGpg.Request request) throws GetGpgException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getGpg")));
+    return this.service.getGpg(authValue);
   }
 
-  public PublicKey create(Create.Request request) throws CreateException {
-    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for create")));
-    return this.service.create(authValue, request.getBody());
+  public PublicKey createGpg(CreateGpg.Request request) throws CreateGpgException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for createGpg")));
+    return this.service.createGpg(authValue, request.getBody());
   }
 
-  public void deleteKey(DeleteKey.Request request) throws DeleteKeyException {
-    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for deleteKey")));
-    this.service.deleteKey(authValue, request.getName());
+  public void deleteGpg(DeleteGpg.Request request) throws DeleteGpgException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for deleteGpg")));
+    this.service.deleteGpg(authValue, request.getName());
+  }
+
+  public PublicKey getRsa(GetRsa.Request request) throws GetRsaException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getRsa")));
+    return this.service.getRsa(authValue);
+  }
+
+  public PublicKey createRsa(CreateRsa.Request request) throws CreateRsaException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for createRsa")));
+    return this.service.createRsa(authValue, request.getBody());
+  }
+
+  public void deleteRsa(DeleteRsa.Request request) throws DeleteRsaException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for deleteRsa")));
+    this.service.deleteRsa(authValue, request.getName());
   }
 }

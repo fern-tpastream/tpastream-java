@@ -24,13 +24,12 @@ dependencies {
     implementation 'io.github.openfeign:feign-core:11.8'
     implementation 'io.github.openfeign:feign-jaxrs2:11.8'
 }
-
 publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'io.github.fern-api'
             artifactId = 'tpastream'
-            version = '0.0.12'
+            version = '0.0.13'
 
             from components.java
         }
