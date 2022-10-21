@@ -29,7 +29,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.fern-api'
             artifactId = 'tpastream'
-            version = '0.0.11'
+            version = '0.0.12'
 
             from components.java
         }
