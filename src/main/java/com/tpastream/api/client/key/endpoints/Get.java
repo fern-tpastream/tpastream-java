@@ -1,6 +1,6 @@
 package com.tpastream.api.client.key.endpoints;
 
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -12,15 +12,15 @@ public final class Get {
   }
 
   public static final class Request {
-    private final Optional<Authorization> authOverride;
+    private final Optional<BasicAuth> authOverride;
 
     private int _cachedHashCode;
 
-    Request(Optional<Authorization> authOverride) {
+    Request(Optional<BasicAuth> authOverride) {
       this.authOverride = authOverride;
     }
 
-    public Optional<Authorization> getAuthOverride() {
+    public Optional<BasicAuth> getAuthOverride() {
       return authOverride;
     }
 
@@ -52,7 +52,7 @@ public final class Get {
     }
 
     public static final class Builder {
-      private Optional<Authorization> authOverride = Optional.empty();
+      private Optional<BasicAuth> authOverride = Optional.empty();
 
       private Builder() {
       }
@@ -62,12 +62,12 @@ public final class Get {
         return this;
       }
 
-      public Builder authOverride(Optional<Authorization> authOverride) {
+      public Builder authOverride(Optional<BasicAuth> authOverride) {
         this.authOverride = authOverride;
         return this;
       }
 
-      public Builder authOverride(Authorization authOverride) {
+      public Builder authOverride(BasicAuth authOverride) {
         this.authOverride = Optional.of(authOverride);
         return this;
       }

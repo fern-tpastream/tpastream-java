@@ -1,6 +1,6 @@
 package com.tpastream.api.client.key.endpoints;
 
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -12,18 +12,18 @@ public final class Create {
   }
 
   public static final class Request {
-    private final Optional<Authorization> authOverride;
+    private final Optional<BasicAuth> authOverride;
 
     private final String body;
 
     private int _cachedHashCode;
 
-    Request(Optional<Authorization> authOverride, String body) {
+    Request(Optional<BasicAuth> authOverride, String body) {
       this.authOverride = authOverride;
       this.body = body;
     }
 
-    public Optional<Authorization> getAuthOverride() {
+    public Optional<BasicAuth> getAuthOverride() {
       return authOverride;
     }
 
@@ -67,15 +67,15 @@ public final class Create {
     public interface _FinalStage {
       Request build();
 
-      _FinalStage authOverride(Optional<Authorization> authOverride);
+      _FinalStage authOverride(Optional<BasicAuth> authOverride);
 
-      _FinalStage authOverride(Authorization authOverride);
+      _FinalStage authOverride(BasicAuth authOverride);
     }
 
     static final class Builder implements BodyStage, _FinalStage {
       private String body;
 
-      private Optional<Authorization> authOverride = Optional.empty();
+      private Optional<BasicAuth> authOverride = Optional.empty();
 
       private Builder() {
       }
@@ -94,13 +94,13 @@ public final class Create {
       }
 
       @Override
-      public _FinalStage authOverride(Authorization authOverride) {
+      public _FinalStage authOverride(BasicAuth authOverride) {
         this.authOverride = Optional.of(authOverride);
         return this;
       }
 
       @Override
-      public _FinalStage authOverride(Optional<Authorization> authOverride) {
+      public _FinalStage authOverride(Optional<BasicAuth> authOverride) {
         this.authOverride = authOverride;
         return this;
       }

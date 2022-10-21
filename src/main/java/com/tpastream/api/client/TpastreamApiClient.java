@@ -21,7 +21,7 @@ public final class TpastreamApiClient {
     this.employersServiceClient = memoize(() -> new EmployersServiceClient(url));
   }
 
-  public TpastreamApiClient(String url, Authorization auth) {
+  public TpastreamApiClient(String url, BasicAuth auth) {
     this.publicKeyServiceClient = memoize(() -> new PublicKeyServiceClient(url, auth));
     this.claimsServiceClient = memoize(() -> new ClaimsServiceClient(url, auth));
     this.employersServiceClient = memoize(() -> new EmployersServiceClient(url, auth));

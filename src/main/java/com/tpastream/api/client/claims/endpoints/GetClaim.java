@@ -1,6 +1,6 @@
 package com.tpastream.api.client.claims.endpoints;
 
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
@@ -13,18 +13,18 @@ public final class GetClaim {
   }
 
   public static final class Request {
-    private final Optional<Authorization> authOverride;
+    private final Optional<BasicAuth> authOverride;
 
     private final Integer claimMedicalId;
 
     private int _cachedHashCode;
 
-    Request(Optional<Authorization> authOverride, Integer claimMedicalId) {
+    Request(Optional<BasicAuth> authOverride, Integer claimMedicalId) {
       this.authOverride = authOverride;
       this.claimMedicalId = claimMedicalId;
     }
 
-    public Optional<Authorization> getAuthOverride() {
+    public Optional<BasicAuth> getAuthOverride() {
       return authOverride;
     }
 
@@ -68,15 +68,15 @@ public final class GetClaim {
     public interface _FinalStage {
       Request build();
 
-      _FinalStage authOverride(Optional<Authorization> authOverride);
+      _FinalStage authOverride(Optional<BasicAuth> authOverride);
 
-      _FinalStage authOverride(Authorization authOverride);
+      _FinalStage authOverride(BasicAuth authOverride);
     }
 
     static final class Builder implements ClaimMedicalIdStage, _FinalStage {
       private Integer claimMedicalId;
 
-      private Optional<Authorization> authOverride = Optional.empty();
+      private Optional<BasicAuth> authOverride = Optional.empty();
 
       private Builder() {
       }
@@ -95,13 +95,13 @@ public final class GetClaim {
       }
 
       @Override
-      public _FinalStage authOverride(Authorization authOverride) {
+      public _FinalStage authOverride(BasicAuth authOverride) {
         this.authOverride = Optional.of(authOverride);
         return this;
       }
 
       @Override
-      public _FinalStage authOverride(Optional<Authorization> authOverride) {
+      public _FinalStage authOverride(Optional<BasicAuth> authOverride) {
         this.authOverride = authOverride;
         return this;
       }

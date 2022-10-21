@@ -1,6 +1,6 @@
 package com.tpastream.api.client.employers.endpoints;
 
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
@@ -13,7 +13,7 @@ public final class GetAllEmployers {
   }
 
   public static final class Request {
-    private final Optional<Authorization> authOverride;
+    private final Optional<BasicAuth> authOverride;
 
     private final Integer employerId;
 
@@ -23,7 +23,7 @@ public final class GetAllEmployers {
 
     private int _cachedHashCode;
 
-    Request(Optional<Authorization> authOverride, Integer employerId, Optional<Integer> page,
+    Request(Optional<BasicAuth> authOverride, Integer employerId, Optional<Integer> page,
         Optional<Integer> perPage) {
       this.authOverride = authOverride;
       this.employerId = employerId;
@@ -31,7 +31,7 @@ public final class GetAllEmployers {
       this.perPage = perPage;
     }
 
-    public Optional<Authorization> getAuthOverride() {
+    public Optional<BasicAuth> getAuthOverride() {
       return authOverride;
     }
 
@@ -83,9 +83,9 @@ public final class GetAllEmployers {
     public interface _FinalStage {
       Request build();
 
-      _FinalStage authOverride(Optional<Authorization> authOverride);
+      _FinalStage authOverride(Optional<BasicAuth> authOverride);
 
-      _FinalStage authOverride(Authorization authOverride);
+      _FinalStage authOverride(BasicAuth authOverride);
 
       _FinalStage page(Optional<Integer> page);
 
@@ -103,7 +103,7 @@ public final class GetAllEmployers {
 
       private Optional<Integer> page = Optional.empty();
 
-      private Optional<Authorization> authOverride = Optional.empty();
+      private Optional<BasicAuth> authOverride = Optional.empty();
 
       private Builder() {
       }
@@ -148,13 +148,13 @@ public final class GetAllEmployers {
       }
 
       @Override
-      public _FinalStage authOverride(Authorization authOverride) {
+      public _FinalStage authOverride(BasicAuth authOverride) {
         this.authOverride = Optional.of(authOverride);
         return this;
       }
 
       @Override
-      public _FinalStage authOverride(Optional<Authorization> authOverride) {
+      public _FinalStage authOverride(Optional<BasicAuth> authOverride) {
         this.authOverride = authOverride;
         return this;
       }
