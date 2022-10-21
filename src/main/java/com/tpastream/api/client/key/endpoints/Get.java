@@ -1,4 +1,4 @@
-package com.tpastream.api.client.public.key.endpoints;
+package com.tpastream.api.client.key.endpoints;
 
 import com.tpastream.api.client.Authorization;
 import java.lang.Object;

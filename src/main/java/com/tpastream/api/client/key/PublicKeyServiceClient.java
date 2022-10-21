@@ -1,13 +1,13 @@
-package com.tpastream.api.client.public.key;
+package com.tpastream.api.client.key;
 
 import com.tpastream.api.client.Authorization;
-import com.tpastream.api.client.public.key.endpoints.Create;
-import com.tpastream.api.client.public.key.endpoints.DeleteKey;
-import com.tpastream.api.client.public.key.endpoints.Get;
-import com.tpastream.api.client.public.key.exceptions.CreateException;
-import com.tpastream.api.client.public.key.exceptions.DeleteKeyException;
-import com.tpastream.api.client.public.key.exceptions.GetException;
-import com.tpastream.api.client.public.key.types.PublicKey;
+import com.tpastream.api.client.key.endpoints.Create;
+import com.tpastream.api.client.key.endpoints.DeleteKey;
+import com.tpastream.api.client.key.endpoints.Get;
+import com.tpastream.api.client.key.exceptions.CreateException;
+import com.tpastream.api.client.key.exceptions.DeleteKeyException;
+import com.tpastream.api.client.key.exceptions.GetException;
+import com.tpastream.api.client.key.types.PublicKey;
 import java.lang.RuntimeException;
 import java.lang.String;
 import java.util.Optional;

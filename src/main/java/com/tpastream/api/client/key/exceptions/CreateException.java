@@ -1,4 +1,4 @@
-package com.tpastream.api.client.public.key.exceptions;
+package com.tpastream.api.client.key.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

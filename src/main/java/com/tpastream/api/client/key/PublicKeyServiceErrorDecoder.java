@@ -1,9 +1,9 @@
-package com.tpastream.api.client.public.key;
+package com.tpastream.api.client.key;
 
 import com.fern.java.jackson.ClientObjectMappers;
-import com.tpastream.api.client.public.key.exceptions.CreateException;
-import com.tpastream.api.client.public.key.exceptions.DeleteKeyException;
-import com.tpastream.api.client.public.key.exceptions.GetException;
+import com.tpastream.api.client.key.exceptions.CreateException;
+import com.tpastream.api.client.key.exceptions.DeleteKeyException;
+import com.tpastream.api.client.key.exceptions.GetException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import java.io.IOException;

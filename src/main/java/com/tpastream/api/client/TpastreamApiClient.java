@@ -2,7 +2,7 @@ package com.tpastream.api.client;
 
 import com.tpastream.api.client.claims.ClaimsServiceClient;
 import com.tpastream.api.client.employers.EmployersServiceClient;
-import com.tpastream.api.client.public.key.PublicKeyServiceClient;
+import com.tpastream.api.client.key.PublicKeyServiceClient;
 import java.lang.String;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
@@ -35,7 +35,7 @@ public final class TpastreamApiClient {
     return this.employersServiceClient.get();
   }
 
-  public final PublicKeyServiceClient publicKey() {
+  public final PublicKeyServiceClient key() {
     return this.publicKeyServiceClient.get();
   }
 

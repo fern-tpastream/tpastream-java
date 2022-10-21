@@ -1,4 +1,4 @@
-package com.tpastream.api.client.public.key.exceptions;
+package com.tpastream.api.client.key.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -17,14 +17,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 @JsonDeserialize(
-    using = GetException.Deserializer.class
+    using = DeleteKeyException.Deserializer.class
 )
-public final class GetException extends Exception {
+public final class DeleteKeyException extends Exception {
   private final Value value;
 
   private int statusCode;
 
-  private GetException(Value value, int statusCode) {
+  private DeleteKeyException(Value value, int statusCode) {
     this.value = value;
     this.statusCode = statusCode;
   }
@@ -37,8 +37,8 @@ public final class GetException extends Exception {
     return this.statusCode;
   }
 
-  public static GetException other(Object unknownValue, int statusCode) {
-    return new GetException(new UnknownErrorValue(unknownValue), statusCode);
+  public static DeleteKeyException other(Object unknownValue, int statusCode) {
+    return new DeleteKeyException(new UnknownErrorValue(unknownValue), statusCode);
   }
 
   public boolean isOther() {
@@ -101,16 +101,17 @@ public final class GetException extends Exception {
 
     @Override
     public String toString() {
-      return "GetException{" + "unknownValue: " + unknownValue + "}";
+      return "DeleteKeyException{" + "unknownValue: " + unknownValue + "}";
     }
   }
 
-  static final class Deserializer extends JsonDeserializer<GetException> {
+  static final class Deserializer extends JsonDeserializer<DeleteKeyException> {
     @Override
-    public GetException deserialize(JsonParser p, DeserializationContext ctx) throws IOException {
+    public DeleteKeyException deserialize(JsonParser p, DeserializationContext ctx) throws
+        IOException {
       Value value = ctx.readValue(p, Value.class);
       int statusCode = (int) ctx.getAttribute("statusCode");
-      return new GetException(value, statusCode);
+      return new DeleteKeyException(value, statusCode);
     }
   }
 }

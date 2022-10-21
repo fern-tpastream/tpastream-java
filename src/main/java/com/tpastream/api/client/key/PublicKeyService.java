@@ -1,12 +1,12 @@
-package com.tpastream.api.client.public.key;
+package com.tpastream.api.client.key;
 
 import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
 import com.tpastream.api.client.Authorization;
-import com.tpastream.api.client.public.key.exceptions.CreateException;
-import com.tpastream.api.client.public.key.exceptions.DeleteKeyException;
-import com.tpastream.api.client.public.key.exceptions.GetException;
-import com.tpastream.api.client.public.key.types.PublicKey;
+import com.tpastream.api.client.key.exceptions.CreateException;
+import com.tpastream.api.client.key.exceptions.DeleteKeyException;
+import com.tpastream.api.client.key.exceptions.GetException;
+import com.tpastream.api.client.key.types.PublicKey;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;

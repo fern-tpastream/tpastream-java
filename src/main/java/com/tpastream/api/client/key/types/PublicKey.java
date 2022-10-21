@@ -1,4 +1,4 @@
-package com.tpastream.api.client.public.key.types;
+package com.tpastream.api.client.key.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

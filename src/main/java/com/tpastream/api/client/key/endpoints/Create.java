@@ -1,4 +1,4 @@
-package com.tpastream.api.client.public.key.endpoints;
+package com.tpastream.api.client.key.endpoints;
 
 import com.tpastream.api.client.Authorization;
 import java.lang.Object;
@@ -7,28 +7,28 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public final class DeleteKey {
-  private DeleteKey() {
+public final class Create {
+  private Create() {
   }
 
   public static final class Request {
     private final Optional<Authorization> authOverride;
 
-    private final String name;
+    private final String body;
 
     private int _cachedHashCode;
 
-    Request(Optional<Authorization> authOverride, String name) {
+    Request(Optional<Authorization> authOverride, String body) {
       this.authOverride = authOverride;
-      this.name = name;
+      this.body = body;
     }
 
     public Optional<Authorization> getAuthOverride() {
       return authOverride;
     }
 
-    public String getName() {
-      return name;
+    public String getBody() {
+      return body;
     }
 
     @Override
@@ -38,28 +38,28 @@ public final class DeleteKey {
     }
 
     private boolean equalTo(Request other) {
-      return authOverride.equals(other.authOverride) && name.equals(other.name);
+      return authOverride.equals(other.authOverride) && body.equals(other.body);
     }
 
     @Override
     public int hashCode() {
       if (_cachedHashCode == 0) {
-        _cachedHashCode = Objects.hash(this.authOverride, this.name);
+        _cachedHashCode = Objects.hash(this.authOverride, this.body);
       }
       return _cachedHashCode;
     }
 
     @Override
     public String toString() {
-      return "DeleteKey.Request{" + "authOverride: " + authOverride + ", name: " + name + "}";
+      return "Create.Request{" + "authOverride: " + authOverride + ", body: " + body + "}";
     }
 
-    public static NameStage builder() {
+    public static BodyStage builder() {
       return new Builder();
     }
 
-    public interface NameStage {
-      _FinalStage name(String name);
+    public interface BodyStage {
+      _FinalStage body(String body);
 
       Builder from(Request other);
     }
@@ -72,8 +72,8 @@ public final class DeleteKey {
       _FinalStage authOverride(Authorization authOverride);
     }
 
-    static final class Builder implements NameStage, _FinalStage {
-      private String name;
+    static final class Builder implements BodyStage, _FinalStage {
+      private String body;
 
       private Optional<Authorization> authOverride = Optional.empty();
 
@@ -83,13 +83,13 @@ public final class DeleteKey {
       @Override
       public Builder from(Request other) {
         authOverride(other.getAuthOverride());
-        name(other.getName());
+        body(other.getBody());
         return this;
       }
 
       @Override
-      public _FinalStage name(String name) {
-        this.name = name;
+      public _FinalStage body(String body) {
+        this.body = body;
         return this;
       }
 
@@ -107,7 +107,7 @@ public final class DeleteKey {
 
       @Override
       public Request build() {
-        return new Request(authOverride, name);
+        return new Request(authOverride, body);
       }
     }
   }
