@@ -1,6 +1,6 @@
 package com.tpastream.api.client.claims.endpoints;
 
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
@@ -13,7 +13,7 @@ public final class GetAllClaims {
   }
 
   public static final class Request {
-    private final Optional<Authorization> authOverride;
+    private final Optional<BasicAuth> authOverride;
 
     private final Optional<Integer> page;
 
@@ -21,14 +21,13 @@ public final class GetAllClaims {
 
     private int _cachedHashCode;
 
-    Request(Optional<Authorization> authOverride, Optional<Integer> page,
-        Optional<Integer> perPage) {
+    Request(Optional<BasicAuth> authOverride, Optional<Integer> page, Optional<Integer> perPage) {
       this.authOverride = authOverride;
       this.page = page;
       this.perPage = perPage;
     }
 
-    public Optional<Authorization> getAuthOverride() {
+    public Optional<BasicAuth> getAuthOverride() {
       return authOverride;
     }
 
@@ -68,7 +67,7 @@ public final class GetAllClaims {
     }
 
     public static final class Builder {
-      private Optional<Authorization> authOverride = Optional.empty();
+      private Optional<BasicAuth> authOverride = Optional.empty();
 
       private Optional<Integer> page = Optional.empty();
 
@@ -84,12 +83,12 @@ public final class GetAllClaims {
         return this;
       }
 
-      public Builder authOverride(Optional<Authorization> authOverride) {
+      public Builder authOverride(Optional<BasicAuth> authOverride) {
         this.authOverride = authOverride;
         return this;
       }
 
-      public Builder authOverride(Authorization authOverride) {
+      public Builder authOverride(BasicAuth authOverride) {
         this.authOverride = Optional.of(authOverride);
         return this;
       }

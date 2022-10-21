@@ -2,7 +2,7 @@ package com.tpastream.api.client.claims;
 
 import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import com.tpastream.api.client.claims.exceptions.GetAllClaimsException;
 import com.tpastream.api.client.claims.exceptions.GetClaimException;
 import com.tpastream.api.client.claims.types.AllClaims;
@@ -30,13 +30,13 @@ import javax.ws.rs.core.MediaType;
 interface ClaimsService {
   @GET
   @Path("/")
-  AllClaims getAllClaims(@HeaderParam("Authorization") Authorization auth,
+  AllClaims getAllClaims(@HeaderParam("Authorization") BasicAuth auth,
       @QueryParam("page") Optional<Integer> page, @QueryParam("per_page") Optional<Integer> perPage)
       throws GetAllClaimsException;
 
   @POST
   @Path("/{claim_medical_id}")
-  Claim getClaim(@HeaderParam("Authorization") Authorization auth,
+  Claim getClaim(@HeaderParam("Authorization") BasicAuth auth,
       @PathParam("claim_medical_id") Integer claimMedicalId) throws GetClaimException;
 
   static ClaimsService getClient(String url) {

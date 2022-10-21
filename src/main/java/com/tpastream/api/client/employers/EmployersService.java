@@ -2,7 +2,7 @@ package com.tpastream.api.client.employers;
 
 import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import com.tpastream.api.client.employers.exceptions.GetAllEmployersException;
 import com.tpastream.api.client.employers.types.AllAccounts;
 import feign.Feign;
@@ -27,7 +27,7 @@ import javax.ws.rs.core.MediaType;
 interface EmployersService {
   @GET
   @Path("/{employer_id}/member")
-  AllAccounts getAllEmployers(@HeaderParam("Authorization") Authorization auth,
+  AllAccounts getAllEmployers(@HeaderParam("Authorization") BasicAuth auth,
       @PathParam("employer_id") Integer employerId, @QueryParam("page") Optional<Integer> page,
       @QueryParam("per_page") Optional<Integer> perPage) throws GetAllEmployersException;
 

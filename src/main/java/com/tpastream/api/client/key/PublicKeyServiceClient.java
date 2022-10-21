@@ -1,6 +1,6 @@
 package com.tpastream.api.client.key;
 
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import com.tpastream.api.client.key.endpoints.Create;
 import com.tpastream.api.client.key.endpoints.DeleteKey;
 import com.tpastream.api.client.key.endpoints.Get;
@@ -15,30 +15,30 @@ import java.util.Optional;
 public final class PublicKeyServiceClient {
   private final PublicKeyService service;
 
-  private final Optional<Authorization> auth;
+  private final Optional<BasicAuth> auth;
 
   public PublicKeyServiceClient(String url) {
     this.service = PublicKeyService.getClient(url);
     this.auth = Optional.empty();
   }
 
-  public PublicKeyServiceClient(String url, Authorization auth) {
+  public PublicKeyServiceClient(String url, BasicAuth auth) {
     this.service = PublicKeyService.getClient(url);
     this.auth = Optional.of(auth);
   }
 
   public PublicKey get(Get.Request request) throws GetException {
-    Authorization authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for get")));
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for get")));
     return this.service.get(authValue);
   }
 
   public PublicKey create(Create.Request request) throws CreateException {
-    Authorization authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for create")));
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for create")));
     return this.service.create(authValue, request.getBody());
   }
 
   public void deleteKey(DeleteKey.Request request) throws DeleteKeyException {
-    Authorization authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for deleteKey")));
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for deleteKey")));
     this.service.deleteKey(authValue, request.getName());
   }
 }

@@ -2,7 +2,7 @@ package com.tpastream.api.client.key;
 
 import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
-import com.tpastream.api.client.Authorization;
+import com.tpastream.api.client.BasicAuth;
 import com.tpastream.api.client.key.exceptions.CreateException;
 import com.tpastream.api.client.key.exceptions.DeleteKeyException;
 import com.tpastream.api.client.key.exceptions.GetException;
@@ -28,16 +28,16 @@ import javax.ws.rs.core.MediaType;
 interface PublicKeyService {
   @GET
   @Path("/")
-  PublicKey get(@HeaderParam("Authorization") Authorization auth) throws GetException;
+  PublicKey get(@HeaderParam("Authorization") BasicAuth auth) throws GetException;
 
   @POST
   @Path("/")
-  PublicKey create(@HeaderParam("Authorization") Authorization auth, String body) throws
+  PublicKey create(@HeaderParam("Authorization") BasicAuth auth, String body) throws
       CreateException;
 
   @DELETE
   @Path("/{name}")
-  void deleteKey(@HeaderParam("Authorization") Authorization auth, @PathParam("name") String name)
+  void deleteKey(@HeaderParam("Authorization") BasicAuth auth, @PathParam("name") String name)
       throws DeleteKeyException;
 
   static PublicKeyService getClient(String url) {
