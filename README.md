@@ -1,10 +1,10 @@
-# {Company} Java Library
+# TPA Stream Java Library
 
 [![Maven Central](https://img.shields.io/badge/maven--central-v0.0.1-orange)](https://mvnrepository.com/artifact/com.{company}/{company}-java)
 
 ## Documentation
 
-API documentation is available at <https://docs.{company}.com/>.
+API documentation is available at <https://developers.tpastream.com/en/latest/index.html>.
 
 ## Usage
 
@@ -24,7 +24,7 @@ TBD
 
 ## SDK Examples
 
-Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://docs.{company}.com/) to see all of our endpoints.
+Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://developers.tpastream.com/en/latest/index.html) to see all of our endpoints.
 
 ### TODO 1
 
@@ -38,4 +38,4 @@ This SDK is in beta, and there may be breaking changes between versions without 
 
 ## Questions or feedback?
 
-Feel free to [leave an issue](https://github.com/fern-api/{company}-java) on this repo.
+Feel free to [leave an issue](https://github.com/fern-tpastream/tpastream-java) on this repo.
