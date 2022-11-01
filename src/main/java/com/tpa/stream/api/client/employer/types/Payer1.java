@@ -13,21 +13,24 @@ import java.util.Objects;
 import java.util.Optional;
 
 @JsonDeserialize(
-    builder = Employer.Builder.class
+    builder = Payer1.Builder.class
 )
-public final class Employer {
+public final class Payer1 {
   private final Optional<Integer> id;
 
   private final String name;
 
-  private final Optional<Object> reimbursementPolicy;
+  private final String retriever;
+
+  private final Optional<String> shortName;
 
   private int _cachedHashCode;
 
-  Employer(Optional<Integer> id, String name, Optional<Object> reimbursementPolicy) {
+  Payer1(Optional<Integer> id, String name, String retriever, Optional<String> shortName) {
     this.id = id;
     this.name = name;
-    this.reimbursementPolicy = reimbursementPolicy;
+    this.retriever = retriever;
+    this.shortName = shortName;
   }
 
   @JsonProperty("id")
@@ -40,32 +43,37 @@ public final class Employer {
     return name;
   }
 
-  @JsonProperty("reimbursement_policy")
-  public Optional<Object> getReimbursementPolicy() {
-    return reimbursementPolicy;
+  @JsonProperty("retriever")
+  public String getRetriever() {
+    return retriever;
+  }
+
+  @JsonProperty("short_name")
+  public Optional<String> getShortName() {
+    return shortName;
   }
 
   @Override
   public boolean equals(Object other) {
     if (this == other) return true;
-    return other instanceof Employer && equalTo((Employer) other);
+    return other instanceof Payer1 && equalTo((Payer1) other);
   }
 
-  private boolean equalTo(Employer other) {
-    return id.equals(other.id) && name.equals(other.name) && reimbursementPolicy.equals(other.reimbursementPolicy);
+  private boolean equalTo(Payer1 other) {
+    return id.equals(other.id) && name.equals(other.name) && retriever.equals(other.retriever) && shortName.equals(other.shortName);
   }
 
   @Override
   public int hashCode() {
     if (_cachedHashCode == 0) {
-      _cachedHashCode = Objects.hash(this.id, this.name, this.reimbursementPolicy);
+      _cachedHashCode = Objects.hash(this.id, this.name, this.retriever, this.shortName);
     }
     return _cachedHashCode;
   }
 
   @Override
   public String toString() {
-    return "Employer{" + "id: " + id + ", name: " + name + ", reimbursementPolicy: " + reimbursementPolicy + "}";
+    return "Payer1{" + "id: " + id + ", name: " + name + ", retriever: " + retriever + ", shortName: " + shortName + "}";
   }
 
   public static NameStage builder() {
@@ -73,30 +81,36 @@ public final class Employer {
   }
 
   public interface NameStage {
-    _FinalStage name(String name);
+    RetrieverStage name(String name);
 
-    Builder from(Employer other);
+    Builder from(Payer1 other);
+  }
+
+  public interface RetrieverStage {
+    _FinalStage retriever(String retriever);
   }
 
   public interface _FinalStage {
-    Employer build();
+    Payer1 build();
 
     _FinalStage id(Optional<Integer> id);
 
     _FinalStage id(Integer id);
 
-    _FinalStage reimbursementPolicy(Optional<Object> reimbursementPolicy);
+    _FinalStage shortName(Optional<String> shortName);
 
-    _FinalStage reimbursementPolicy(Object reimbursementPolicy);
+    _FinalStage shortName(String shortName);
   }
 
   @JsonIgnoreProperties(
       ignoreUnknown = true
   )
-  static final class Builder implements NameStage, _FinalStage {
+  static final class Builder implements NameStage, RetrieverStage, _FinalStage {
     private String name;
 
-    private Optional<Object> reimbursementPolicy = Optional.empty();
+    private String retriever;
+
+    private Optional<String> shortName = Optional.empty();
 
     private Optional<Integer> id = Optional.empty();
 
@@ -104,33 +118,41 @@ public final class Employer {
     }
 
     @Override
-    public Builder from(Employer other) {
+    public Builder from(Payer1 other) {
       id(other.getId());
       name(other.getName());
-      reimbursementPolicy(other.getReimbursementPolicy());
+      retriever(other.getRetriever());
+      shortName(other.getShortName());
       return this;
     }
 
     @Override
     @JsonSetter("name")
-    public _FinalStage name(String name) {
+    public RetrieverStage name(String name) {
       this.name = name;
       return this;
     }
 
     @Override
-    public _FinalStage reimbursementPolicy(Object reimbursementPolicy) {
-      this.reimbursementPolicy = Optional.of(reimbursementPolicy);
+    @JsonSetter("retriever")
+    public _FinalStage retriever(String retriever) {
+      this.retriever = retriever;
+      return this;
+    }
+
+    @Override
+    public _FinalStage shortName(String shortName) {
+      this.shortName = Optional.of(shortName);
       return this;
     }
 
     @Override
     @JsonSetter(
-        value = "reimbursement_policy",
+        value = "short_name",
         nulls = Nulls.SKIP
     )
-    public _FinalStage reimbursementPolicy(Optional<Object> reimbursementPolicy) {
-      this.reimbursementPolicy = reimbursementPolicy;
+    public _FinalStage shortName(Optional<String> shortName) {
+      this.shortName = shortName;
       return this;
     }
 
@@ -151,8 +173,8 @@ public final class Employer {
     }
 
     @Override
-    public Employer build() {
-      return new Employer(id, name, reimbursementPolicy);
+    public Payer1 build() {
+      return new Payer1(id, name, retriever, shortName);
     }
   }
 }

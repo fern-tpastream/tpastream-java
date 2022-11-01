@@ -1,9 +1,9 @@
 package com.tpa.stream.api.client.employer;
 
 import com.tpa.stream.api.client.BasicAuth;
-import com.tpa.stream.api.client.employer.endpoints.GetAllEmployers;
-import com.tpa.stream.api.client.employer.exceptions.GetAllEmployersException;
-import com.tpa.stream.api.client.employer.types.AllAccounts;
+import com.tpa.stream.api.client.employer.endpoints.GetAllMembers;
+import com.tpa.stream.api.client.employer.exceptions.GetAllMembersException;
+import com.tpa.stream.api.client.employer.types.MemberPagination;
 import java.lang.RuntimeException;
 import java.lang.String;
 import java.util.Optional;
@@ -23,9 +23,9 @@ public final class EmployersServiceClient {
     this.auth = Optional.of(auth);
   }
 
-  public AllAccounts getAllEmployers(GetAllEmployers.Request request) throws
-      GetAllEmployersException {
-    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getAllEmployers")));
-    return this.service.getAllEmployers(authValue, request.getEmployerId(), request.getPage(), request.getPerPage());
+  public MemberPagination getAllMembers(GetAllMembers.Request request) throws
+      GetAllMembersException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getAllMembers")));
+    return this.service.getAllMembers(authValue, request.getEmployerId(), request.getPage(), request.getPerPage());
   }
 }

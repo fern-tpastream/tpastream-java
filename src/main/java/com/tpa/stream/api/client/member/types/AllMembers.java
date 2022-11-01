@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.tpa.stream.api.client.commons.types.IPageable;
+import com.tpa.stream.api.client.employer.types.Member;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;

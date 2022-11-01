@@ -1,11 +1,10 @@
-package com.tpa.stream.api.client.member.types;
+package com.tpa.stream.api.client.employer.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.tpa.stream.api.client.employer.types.Employer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;

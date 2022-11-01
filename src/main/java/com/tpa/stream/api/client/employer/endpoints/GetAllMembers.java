@@ -8,8 +8,8 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public final class GetAllEmployers {
-  private GetAllEmployers() {
+public final class GetAllMembers {
+  private GetAllMembers() {
   }
 
   public static final class Request {
@@ -67,7 +67,7 @@ public final class GetAllEmployers {
 
     @Override
     public String toString() {
-      return "GetAllEmployers.Request{" + "authOverride: " + authOverride + ", employerId: " + employerId + ", page: " + page + ", perPage: " + perPage + "}";
+      return "GetAllMembers.Request{" + "authOverride: " + authOverride + ", employerId: " + employerId + ", page: " + page + ", perPage: " + perPage + "}";
     }
 
     public static EmployerIdStage builder() {

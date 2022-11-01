@@ -14,9 +14,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 @JsonDeserialize(
-    builder = AllAccounts.Builder.class
+    builder = MemberPagination.Builder.class
 )
-public final class AllAccounts implements IPageable {
+public final class MemberPagination implements IPageable {
   private final boolean hasNext;
 
   private final boolean hasPrev;
@@ -33,13 +33,13 @@ public final class AllAccounts implements IPageable {
 
   private final Optional<Integer> total;
 
-  private final Account data;
+  private final Member data;
 
   private int _cachedHashCode;
 
-  AllAccounts(boolean hasNext, boolean hasPrev, Optional<Integer> nextNum, Optional<Integer> page,
-      Optional<Integer> pages, Optional<Integer> perPage, Optional<Integer> prevNum,
-      Optional<Integer> total, Account data) {
+  MemberPagination(boolean hasNext, boolean hasPrev, Optional<Integer> nextNum,
+      Optional<Integer> page, Optional<Integer> pages, Optional<Integer> perPage,
+      Optional<Integer> prevNum, Optional<Integer> total, Member data) {
     this.hasNext = hasNext;
     this.hasPrev = hasPrev;
     this.nextNum = nextNum;
@@ -100,17 +100,17 @@ public final class AllAccounts implements IPageable {
   }
 
   @JsonProperty("data")
-  public Account getData() {
+  public Member getData() {
     return data;
   }
 
   @Override
   public boolean equals(Object other) {
     if (this == other) return true;
-    return other instanceof AllAccounts && equalTo((AllAccounts) other);
+    return other instanceof MemberPagination && equalTo((MemberPagination) other);
   }
 
-  private boolean equalTo(AllAccounts other) {
+  private boolean equalTo(MemberPagination other) {
     return hasNext == other.hasNext && hasPrev == other.hasPrev && nextNum.equals(other.nextNum) && page.equals(other.page) && pages.equals(other.pages) && perPage.equals(other.perPage) && prevNum.equals(other.prevNum) && total.equals(other.total) && data.equals(other.data);
   }
 
@@ -124,7 +124,7 @@ public final class AllAccounts implements IPageable {
 
   @Override
   public String toString() {
-    return "AllAccounts{" + "hasNext: " + hasNext + ", hasPrev: " + hasPrev + ", nextNum: " + nextNum + ", page: " + page + ", pages: " + pages + ", perPage: " + perPage + ", prevNum: " + prevNum + ", total: " + total + ", data: " + data + "}";
+    return "MemberPagination{" + "hasNext: " + hasNext + ", hasPrev: " + hasPrev + ", nextNum: " + nextNum + ", page: " + page + ", pages: " + pages + ", perPage: " + perPage + ", prevNum: " + prevNum + ", total: " + total + ", data: " + data + "}";
   }
 
   public static HasNextStage builder() {
@@ -134,7 +134,7 @@ public final class AllAccounts implements IPageable {
   public interface HasNextStage {
     HasPrevStage hasNext(boolean hasNext);
 
-    Builder from(AllAccounts other);
+    Builder from(MemberPagination other);
   }
 
   public interface HasPrevStage {
@@ -142,11 +142,11 @@ public final class AllAccounts implements IPageable {
   }
 
   public interface DataStage {
-    _FinalStage data(Account data);
+    _FinalStage data(Member data);
   }
 
   public interface _FinalStage {
-    AllAccounts build();
+    MemberPagination build();
 
     _FinalStage nextNum(Optional<Integer> nextNum);
 
@@ -181,7 +181,7 @@ public final class AllAccounts implements IPageable {
 
     private boolean hasPrev;
 
-    private Account data;
+    private Member data;
 
     private Optional<Integer> total = Optional.empty();
 
@@ -199,7 +199,7 @@ public final class AllAccounts implements IPageable {
     }
 
     @Override
-    public Builder from(AllAccounts other) {
+    public Builder from(MemberPagination other) {
       hasNext(other.getHasNext());
       hasPrev(other.getHasPrev());
       nextNum(other.getNextNum());
@@ -228,7 +228,7 @@ public final class AllAccounts implements IPageable {
 
     @Override
     @JsonSetter("data")
-    public _FinalStage data(Account data) {
+    public _FinalStage data(Member data) {
       this.data = data;
       return this;
     }
@@ -330,8 +330,8 @@ public final class AllAccounts implements IPageable {
     }
 
     @Override
-    public AllAccounts build() {
-      return new AllAccounts(hasNext, hasPrev, nextNum, page, pages, perPage, prevNum, total, data);
+    public MemberPagination build() {
+      return new MemberPagination(hasNext, hasPrev, nextNum, page, pages, perPage, prevNum, total, data);
     }
   }
 }

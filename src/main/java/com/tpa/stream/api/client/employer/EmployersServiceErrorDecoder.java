@@ -1,7 +1,7 @@
 package com.tpa.stream.api.client.employer;
 
 import com.fern.java.jackson.ClientObjectMappers;
-import com.tpa.stream.api.client.employer.exceptions.GetAllEmployersException;
+import com.tpa.stream.api.client.employer.exceptions.GetAllMembersException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import java.io.IOException;
@@ -15,8 +15,8 @@ final class EmployersServiceErrorDecoder implements ErrorDecoder {
   @Override
   public Exception decode(String methodKey, Response response) {
     try {
-      if (methodKey.contains("getAllEmployers")) {
-        return decodeException(response, GetAllEmployersException.class);
+      if (methodKey.contains("getAllMembers")) {
+        return decodeException(response, GetAllMembersException.class);
       }
     }
     catch (IOException e) {

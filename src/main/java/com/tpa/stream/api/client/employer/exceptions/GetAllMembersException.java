@@ -17,14 +17,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 @JsonDeserialize(
-    using = GetAllEmployersException.Deserializer.class
+    using = GetAllMembersException.Deserializer.class
 )
-public final class GetAllEmployersException extends Exception {
+public final class GetAllMembersException extends Exception {
   private final Value value;
 
   private int statusCode;
 
-  private GetAllEmployersException(Value value, int statusCode) {
+  private GetAllMembersException(Value value, int statusCode) {
     this.value = value;
     this.statusCode = statusCode;
   }
@@ -37,8 +37,8 @@ public final class GetAllEmployersException extends Exception {
     return this.statusCode;
   }
 
-  public static GetAllEmployersException other(Object unknownValue, int statusCode) {
-    return new GetAllEmployersException(new UnknownErrorValue(unknownValue), statusCode);
+  public static GetAllMembersException other(Object unknownValue, int statusCode) {
+    return new GetAllMembersException(new UnknownErrorValue(unknownValue), statusCode);
   }
 
   public boolean isOther() {
@@ -101,17 +101,17 @@ public final class GetAllEmployersException extends Exception {
 
     @Override
     public String toString() {
-      return "GetAllEmployersException{" + "unknownValue: " + unknownValue + "}";
+      return "GetAllMembersException{" + "unknownValue: " + unknownValue + "}";
     }
   }
 
-  static final class Deserializer extends JsonDeserializer<GetAllEmployersException> {
+  static final class Deserializer extends JsonDeserializer<GetAllMembersException> {
     @Override
-    public GetAllEmployersException deserialize(JsonParser p, DeserializationContext ctx) throws
+    public GetAllMembersException deserialize(JsonParser p, DeserializationContext ctx) throws
         IOException {
       Value value = ctx.readValue(p, Value.class);
       int statusCode = (int) ctx.getAttribute("statusCode");
-      return new GetAllEmployersException(value, statusCode);
+      return new GetAllMembersException(value, statusCode);
     }
   }
 }

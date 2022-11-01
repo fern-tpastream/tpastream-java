@@ -3,8 +3,8 @@ package com.tpa.stream.api.client.employer;
 import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
 import com.tpa.stream.api.client.BasicAuth;
-import com.tpa.stream.api.client.employer.exceptions.GetAllEmployersException;
-import com.tpa.stream.api.client.employer.types.AllAccounts;
+import com.tpa.stream.api.client.employer.exceptions.GetAllMembersException;
+import com.tpa.stream.api.client.employer.types.MemberPagination;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
@@ -27,9 +27,9 @@ import javax.ws.rs.core.MediaType;
 interface EmployersService {
   @GET
   @Path("/{employer_id}/member")
-  AllAccounts getAllEmployers(@HeaderParam("Authorization") BasicAuth auth,
+  MemberPagination getAllMembers(@HeaderParam("Authorization") BasicAuth auth,
       @PathParam("employer_id") Integer employerId, @QueryParam("page") Optional<Integer> page,
-      @QueryParam("per_page") Optional<Integer> perPage) throws GetAllEmployersException;
+      @QueryParam("per_page") Optional<Integer> perPage) throws GetAllMembersException;
 
   static EmployersService getClient(String url) {
     return Feign.builder()

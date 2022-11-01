@@ -13,21 +13,26 @@ import java.util.Objects;
 import java.util.Optional;
 
 @JsonDeserialize(
-    builder = Employer.Builder.class
+    builder = Vendor.Builder.class
 )
-public final class Employer {
+public final class Vendor {
+  private final String code;
+
   private final Optional<Integer> id;
 
   private final String name;
 
-  private final Optional<Object> reimbursementPolicy;
-
   private int _cachedHashCode;
 
-  Employer(Optional<Integer> id, String name, Optional<Object> reimbursementPolicy) {
+  Vendor(String code, Optional<Integer> id, String name) {
+    this.code = code;
     this.id = id;
     this.name = name;
-    this.reimbursementPolicy = reimbursementPolicy;
+  }
+
+  @JsonProperty("code")
+  public String getCode() {
+    return code;
   }
 
   @JsonProperty("id")
@@ -40,63 +45,58 @@ public final class Employer {
     return name;
   }
 
-  @JsonProperty("reimbursement_policy")
-  public Optional<Object> getReimbursementPolicy() {
-    return reimbursementPolicy;
-  }
-
   @Override
   public boolean equals(Object other) {
     if (this == other) return true;
-    return other instanceof Employer && equalTo((Employer) other);
+    return other instanceof Vendor && equalTo((Vendor) other);
   }
 
-  private boolean equalTo(Employer other) {
-    return id.equals(other.id) && name.equals(other.name) && reimbursementPolicy.equals(other.reimbursementPolicy);
+  private boolean equalTo(Vendor other) {
+    return code.equals(other.code) && id.equals(other.id) && name.equals(other.name);
   }
 
   @Override
   public int hashCode() {
     if (_cachedHashCode == 0) {
-      _cachedHashCode = Objects.hash(this.id, this.name, this.reimbursementPolicy);
+      _cachedHashCode = Objects.hash(this.code, this.id, this.name);
     }
     return _cachedHashCode;
   }
 
   @Override
   public String toString() {
-    return "Employer{" + "id: " + id + ", name: " + name + ", reimbursementPolicy: " + reimbursementPolicy + "}";
+    return "Vendor{" + "code: " + code + ", id: " + id + ", name: " + name + "}";
   }
 
-  public static NameStage builder() {
+  public static CodeStage builder() {
     return new Builder();
+  }
+
+  public interface CodeStage {
+    NameStage code(String code);
+
+    Builder from(Vendor other);
   }
 
   public interface NameStage {
     _FinalStage name(String name);
-
-    Builder from(Employer other);
   }
 
   public interface _FinalStage {
-    Employer build();
+    Vendor build();
 
     _FinalStage id(Optional<Integer> id);
 
     _FinalStage id(Integer id);
-
-    _FinalStage reimbursementPolicy(Optional<Object> reimbursementPolicy);
-
-    _FinalStage reimbursementPolicy(Object reimbursementPolicy);
   }
 
   @JsonIgnoreProperties(
       ignoreUnknown = true
   )
-  static final class Builder implements NameStage, _FinalStage {
-    private String name;
+  static final class Builder implements CodeStage, NameStage, _FinalStage {
+    private String code;
 
-    private Optional<Object> reimbursementPolicy = Optional.empty();
+    private String name;
 
     private Optional<Integer> id = Optional.empty();
 
@@ -104,10 +104,17 @@ public final class Employer {
     }
 
     @Override
-    public Builder from(Employer other) {
+    public Builder from(Vendor other) {
+      code(other.getCode());
       id(other.getId());
       name(other.getName());
-      reimbursementPolicy(other.getReimbursementPolicy());
+      return this;
+    }
+
+    @Override
+    @JsonSetter("code")
+    public NameStage code(String code) {
+      this.code = code;
       return this;
     }
 
@@ -115,22 +122,6 @@ public final class Employer {
     @JsonSetter("name")
     public _FinalStage name(String name) {
       this.name = name;
-      return this;
-    }
-
-    @Override
-    public _FinalStage reimbursementPolicy(Object reimbursementPolicy) {
-      this.reimbursementPolicy = Optional.of(reimbursementPolicy);
-      return this;
-    }
-
-    @Override
-    @JsonSetter(
-        value = "reimbursement_policy",
-        nulls = Nulls.SKIP
-    )
-    public _FinalStage reimbursementPolicy(Optional<Object> reimbursementPolicy) {
-      this.reimbursementPolicy = reimbursementPolicy;
       return this;
     }
 
@@ -151,8 +142,8 @@ public final class Employer {
     }
 
     @Override
-    public Employer build() {
-      return new Employer(id, name, reimbursementPolicy);
+    public Vendor build() {
+      return new Vendor(code, id, name);
     }
   }
 }
