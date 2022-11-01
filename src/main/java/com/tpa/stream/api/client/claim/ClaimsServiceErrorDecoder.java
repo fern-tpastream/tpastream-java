@@ -1,8 +1,8 @@
 package com.tpa.stream.api.client.claim;
 
 import com.fern.java.jackson.ClientObjectMappers;
-import com.tpa.stream.api.client.claim.exceptions.GetAllClaimsException;
-import com.tpa.stream.api.client.claim.exceptions.GetClaimException;
+import com.tpa.stream.api.client.claim.exceptions.GetAllException;
+import com.tpa.stream.api.client.claim.exceptions.GetException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import java.io.IOException;
@@ -16,11 +16,11 @@ final class ClaimsServiceErrorDecoder implements ErrorDecoder {
   @Override
   public Exception decode(String methodKey, Response response) {
     try {
-      if (methodKey.contains("getAllClaims")) {
-        return decodeException(response, GetAllClaimsException.class);
+      if (methodKey.contains("getAll")) {
+        return decodeException(response, GetAllException.class);
       }
-      if (methodKey.contains("getClaim")) {
-        return decodeException(response, GetClaimException.class);
+      if (methodKey.contains("get")) {
+        return decodeException(response, GetException.class);
       }
     }
     catch (IOException e) {

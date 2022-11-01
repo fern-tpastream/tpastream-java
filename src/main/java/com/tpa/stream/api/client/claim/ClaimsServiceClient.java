@@ -1,10 +1,10 @@
 package com.tpa.stream.api.client.claim;
 
 import com.tpa.stream.api.client.BasicAuth;
-import com.tpa.stream.api.client.claim.endpoints.GetAllClaims;
-import com.tpa.stream.api.client.claim.endpoints.GetClaim;
-import com.tpa.stream.api.client.claim.exceptions.GetAllClaimsException;
-import com.tpa.stream.api.client.claim.exceptions.GetClaimException;
+import com.tpa.stream.api.client.claim.endpoints.Get;
+import com.tpa.stream.api.client.claim.endpoints.GetAll;
+import com.tpa.stream.api.client.claim.exceptions.GetAllException;
+import com.tpa.stream.api.client.claim.exceptions.GetException;
 import com.tpa.stream.api.client.claim.types.AllClaims;
 import com.tpa.stream.api.client.claim.types.Claim;
 import java.lang.RuntimeException;
@@ -26,13 +26,13 @@ public final class ClaimsServiceClient {
     this.auth = Optional.of(auth);
   }
 
-  public AllClaims getAllClaims(GetAllClaims.Request request) throws GetAllClaimsException {
-    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getAllClaims")));
-    return this.service.getAllClaims(authValue, request.getPage(), request.getPerPage());
+  public AllClaims getAll(GetAll.Request request) throws GetAllException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getAll")));
+    return this.service.getAll(authValue, request.getPage(), request.getPerPage());
   }
 
-  public Claim getClaim(GetClaim.Request request) throws GetClaimException {
-    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for getClaim")));
-    return this.service.getClaim(authValue, request.getClaimMedicalId());
+  public Claim get(Get.Request request) throws GetException {
+    BasicAuth authValue = request.getAuthOverride().orElseGet(() -> this.auth.orElseThrow(() -> new RuntimeException("Auth is required for get")));
+    return this.service.get(authValue, request.getClaimMedicalId());
   }
 }

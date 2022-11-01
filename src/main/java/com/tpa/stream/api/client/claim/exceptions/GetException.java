@@ -17,14 +17,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 @JsonDeserialize(
-    using = GetAllClaimsException.Deserializer.class
+    using = GetException.Deserializer.class
 )
-public final class GetAllClaimsException extends Exception {
+public final class GetException extends Exception {
   private final Value value;
 
   private int statusCode;
 
-  private GetAllClaimsException(Value value, int statusCode) {
+  private GetException(Value value, int statusCode) {
     this.value = value;
     this.statusCode = statusCode;
   }
@@ -37,8 +37,8 @@ public final class GetAllClaimsException extends Exception {
     return this.statusCode;
   }
 
-  public static GetAllClaimsException other(Object unknownValue, int statusCode) {
-    return new GetAllClaimsException(new UnknownErrorValue(unknownValue), statusCode);
+  public static GetException other(Object unknownValue, int statusCode) {
+    return new GetException(new UnknownErrorValue(unknownValue), statusCode);
   }
 
   public boolean isOther() {
@@ -101,17 +101,16 @@ public final class GetAllClaimsException extends Exception {
 
     @Override
     public String toString() {
-      return "GetAllClaimsException{" + "unknownValue: " + unknownValue + "}";
+      return "GetException{" + "unknownValue: " + unknownValue + "}";
     }
   }
 
-  static final class Deserializer extends JsonDeserializer<GetAllClaimsException> {
+  static final class Deserializer extends JsonDeserializer<GetException> {
     @Override
-    public GetAllClaimsException deserialize(JsonParser p, DeserializationContext ctx) throws
-        IOException {
+    public GetException deserialize(JsonParser p, DeserializationContext ctx) throws IOException {
       Value value = ctx.readValue(p, Value.class);
       int statusCode = (int) ctx.getAttribute("statusCode");
-      return new GetAllClaimsException(value, statusCode);
+      return new GetException(value, statusCode);
     }
   }
 }

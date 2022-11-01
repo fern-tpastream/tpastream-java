@@ -8,8 +8,8 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public final class GetClaim {
-  private GetClaim() {
+public final class Get {
+  private Get() {
   }
 
   public static final class Request {
@@ -52,7 +52,7 @@ public final class GetClaim {
 
     @Override
     public String toString() {
-      return "GetClaim.Request{" + "authOverride: " + authOverride + ", claimMedicalId: " + claimMedicalId + "}";
+      return "Get.Request{" + "authOverride: " + authOverride + ", claimMedicalId: " + claimMedicalId + "}";
     }
 
     public static ClaimMedicalIdStage builder() {

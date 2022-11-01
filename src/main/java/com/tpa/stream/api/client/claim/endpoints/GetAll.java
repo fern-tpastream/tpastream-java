@@ -8,8 +8,8 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public final class GetAllClaims {
-  private GetAllClaims() {
+public final class GetAll {
+  private GetAll() {
   }
 
   public static final class Request {
@@ -59,7 +59,7 @@ public final class GetAllClaims {
 
     @Override
     public String toString() {
-      return "GetAllClaims.Request{" + "authOverride: " + authOverride + ", page: " + page + ", perPage: " + perPage + "}";
+      return "GetAll.Request{" + "authOverride: " + authOverride + ", page: " + page + ", perPage: " + perPage + "}";
     }
 
     public static Builder builder() {

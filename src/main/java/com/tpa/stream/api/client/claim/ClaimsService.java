@@ -3,8 +3,8 @@ package com.tpa.stream.api.client.claim;
 import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
 import com.tpa.stream.api.client.BasicAuth;
-import com.tpa.stream.api.client.claim.exceptions.GetAllClaimsException;
-import com.tpa.stream.api.client.claim.exceptions.GetClaimException;
+import com.tpa.stream.api.client.claim.exceptions.GetAllException;
+import com.tpa.stream.api.client.claim.exceptions.GetException;
 import com.tpa.stream.api.client.claim.types.AllClaims;
 import com.tpa.stream.api.client.claim.types.Claim;
 import feign.Feign;
@@ -30,14 +30,14 @@ import javax.ws.rs.core.MediaType;
 interface ClaimsService {
   @GET
   @Path("/")
-  AllClaims getAllClaims(@HeaderParam("Authorization") BasicAuth auth,
+  AllClaims getAll(@HeaderParam("Authorization") BasicAuth auth,
       @QueryParam("page") Optional<Integer> page, @QueryParam("per_page") Optional<Integer> perPage)
-      throws GetAllClaimsException;
+      throws GetAllException;
 
   @POST
   @Path("/{claim_medical_id}")
-  Claim getClaim(@HeaderParam("Authorization") BasicAuth auth,
-      @PathParam("claim_medical_id") Integer claimMedicalId) throws GetClaimException;
+  Claim get(@HeaderParam("Authorization") BasicAuth auth,
+      @PathParam("claim_medical_id") Integer claimMedicalId) throws GetException;
 
   static ClaimsService getClient(String url) {
     return Feign.builder()
