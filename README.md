@@ -13,7 +13,7 @@ API documentation is available at <https://developers.tpastream.com/en/latest/in
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "io.github.fern-api:tpastream:0.0.12"
+implementation "io.github.fern-api:tpastream:0.0.16"
 ```
 
 ### Maven users
@@ -24,7 +24,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.github.fern-api</groupId>
   <artifactId>tpastream</artifactId>
-  <version>0.0.12</version>
+  <version>0.0.16</version>
 </dependency>
 ```
 
